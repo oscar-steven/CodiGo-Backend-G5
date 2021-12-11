@@ -35,6 +35,7 @@ edades = [10,12 ,40, 60, 'Eduardo', 14.5, False, [1,2]]
 print(type(edades))
 
 # JSON (JavaScript Objet Notation) | Diccionario
+#Nota: si una llave se repite suu valor sera modificado y se perdera el anterior valor
 curso = {
     'nombre': 'Backend',
     'dificultad': 'Dificil'
