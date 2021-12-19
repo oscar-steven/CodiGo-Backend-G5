@@ -1,9 +1,11 @@
 from flask import Flask, request
+from flask_cors import CORS
 # el request nos da toda la informacion del cliente
 
 app = Flask(__name__)
-# url? o, la url es el dominio mas el endpoint => 127.0.0.1:5000/
-# endpoint
+# si solamente le pasamos la aplicacion o la instancia de flask habilitara los CORS para todos los dominios y para todos los metodos
+CORS(app=app)
+
 
 mis_productos = [{
     "nombre":"Paneton con arto bromato",
@@ -80,6 +82,23 @@ def producto(id):
                 'message': 'El producto no existe:'
             }
 
+    elif request.method == 'PUT':
+        data = request.get_json()
+        if(id < len(mis_productos)):
+            # sobreescribir la informacion en esa posicion con la nueva que nos esta enviando el front
+            mis_productos[id] = data 
+            return {
+                'Ok': True,
+                'data': mis_productos[id],
+                'message': 'Producto actualizado exitosamente'
+            },201
+
+        else:
+            return {
+                'Ok': False,
+                'data': None,
+                'message': 'El producto con el id {} no existe'.format(id)
+            }
 
 if __name__ == '__main__':
     app.run(debug=True)
