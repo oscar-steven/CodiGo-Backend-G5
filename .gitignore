@@ -1,2 +1,5 @@
 # Evitamos subir el entorno
 entorno_flask/*
+entorno_flask
+entorno_flask/
+entorno_django
