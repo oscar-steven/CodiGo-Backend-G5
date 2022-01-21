@@ -53,6 +53,12 @@ app.post("/producto", (req, res) => {
 //     content:[]
 // }
 
+app
+  .route("/producto/:id")
+  .get((req, res) => {})
+  .put((req, res) => {})
+  .delete((req, res) => {});
+
 // se mantendra escuchando las consultas realizadas a este servidor mediante el puerto definido
 app.listen(port, () => {
   // esto sucedera cuando se levate el servidor de express
