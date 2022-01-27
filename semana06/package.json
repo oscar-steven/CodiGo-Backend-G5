@@ -1,0 +1,26 @@
+{
+  "name": "cafeteria",
+  "version": "1.0.0",
+  "description": "backend para una cafeteria",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "start:dev": "nodemon src/index.js"
+  },
+  "keywords": [
+    "prisma",
+    "nodejs",
+    "express"
+  ],
+  "author": "oscar perez",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "prisma": "^3.8.1"
+  }
+}
