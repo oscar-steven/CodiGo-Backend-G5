@@ -1,3 +1,4 @@
+import { prisma } from "../prisma.js";
 import jwt from "jsonwebtoken";
 
 export function verificarToken(token) {
@@ -9,7 +10,7 @@ export function verificarToken(token) {
   }
 }
 
-export function validarUsuario(req, res, next) {
+export async function validarUsuario(req, res, next) {
   // middleware
   // es un intermediario entre el cliente y el controlador final
   if (!req.headers.authorization) {
@@ -25,8 +26,18 @@ export function validarUsuario(req, res, next) {
   if (resultado instanceof jwt.JsonWebTokenError) {
     return res.status(403).json({
       message: "La token es invalida, intente nuevamente",
+      razon: resultado.message,
     });
   }
+
+  console.log(resultado);
+
+  const usuario = await prisma.usuario.findUnique({
+    where: { id: resultado.id },
+    select: { correo: true, id: true },
+  });
+
+  req.user = usuario;
 
   next();
 }
