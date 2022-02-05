@@ -16,7 +16,7 @@ model Producto {
   id             Int          @id @unique @default(autoincrement())
   nombre         String
   precio         Float
-  imagen         String
+  imagen         String?
   tipoProductoId Int          @map(name: "tipo_producto_id")
   tipoProducto   TipoProducto @relation(fields: [tipoProductoId], references: [id])
 

@@ -1,4 +1,5 @@
 import { ProductoService } from "../services/producto.service.js";
+import { productoDto } from "../services/dtos/request/producto.dto.js";
 
 export async function crear(req, res) {
   try {
