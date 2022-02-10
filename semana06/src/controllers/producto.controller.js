@@ -12,3 +12,25 @@ export async function crear(req, res) {
     });
   }
 }
+
+export async function devolver(req, res) {
+  // 1. req.params
+  // producto/1
+
+  // 2 req.query
+  // producto'email=e@c.com&nonre
+  const { id } = req.params;
+  return res.json(resultado);
+}
+
+export async function devolverProductos(req, res) {
+  const resultado = await ProductoService.listarProductos();
+  return res.json(resultado);
+}
+
+export async function eliminarProducto(req, res) {
+  const { id } = req.params;
+  const resultado = await ProductoService.eliminarProducto(+id);
+
+  return res.status(201).json(resultado);
+}
