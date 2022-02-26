@@ -45,6 +45,24 @@ export class PagoService {
           //   number: "48074339",
           // },
         },
+        payment_methods: {
+          default_installments: 2, // el numero de cuotas por defecto que aparecera en el formulario
+          installments: 3, //maximo numero de cuotas que puede sacar un usuario con tarjeta de credito
+          excluded_payment_methods: [
+            {
+              id: "diners",
+            },
+            {
+              id: "debvisa",
+            },
+          ],
+          excluded_payment_types: [
+            // debit_card credit_card atm
+            {
+              id: "atm",
+            },
+          ],
+        },
         items: itemsMP,
         // [
         //   {
@@ -60,10 +78,11 @@ export class PagoService {
         auto_return: "approved",
         // Son las url que me llevaran al sitio si el pago fue:
         back_urls: {
-          success: "http://localhost:3000/exito",
-          pending: "http://localhost:3000/pendiente",
-          failure: "http://localhost:3000/fallo",
+          success: `${process.env.DOMINIO}/exito`,
+          pending: `${process.env.DOMINIO}/pendiente`,
+          failure: `${process.env.DOMINIO}/fallo`,
         },
+        notification_url: `${process.env.DOMINIO}/notificaciones`,
       });
       return {
         resultado: preferencia,
