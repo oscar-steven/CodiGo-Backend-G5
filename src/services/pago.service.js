@@ -94,4 +94,8 @@ export class PagoService {
       };
     }
   }
+
+  static recibirNotificacion(data) {
+    console.log("la data es:"), console.log(data);
+  }
 }
