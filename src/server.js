@@ -6,6 +6,7 @@ import { productoRouter } from "./routes/producto.routes.js";
 import mercadopago from "mercadopago";
 import { pagoRouter } from "./routes/pago.routes.js";
 import { clienteRouter } from "./routes/cliente.routes.js";
+import { facturacionRouter } from "./routes/facturacion.routes.js";
 
 // access_token > es la token que se va a crear por cada negocio y esto servira a MP para saber a que negocio tiene que depositar el monto cobrado
 // integrator_id > el id del desarrollador que esta haciendo esta integracion
@@ -25,6 +26,7 @@ app.use(categoriaRouter);
 app.use(categoriaProductoRouter);
 app.use(pagoRouter);
 app.use(clienteRouter);
+app.use(facturacionRouter);
 
 app.listen(PORT, async () => {
   console.log(`Servidor corriendo exitosamente en el puerto ${PORT}`);
