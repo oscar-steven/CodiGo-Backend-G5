@@ -1,0 +1,43 @@
+{
+  "name": "backend-ecommerce",
+  "version": "1.0.0",
+  "description": "ecommerce project",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "start:dev": "dotenv -e .env -- nodemon src/server.js",
+    "crear_migracion": "prisma migrate dev --preview-feature",
+    "correr_migraciones": "prisma migrate deploy --preview-feature",
+    "reset_db": "prisma migrate reset --preview-feature --skip-seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "prisma"
+  ],
+  "author": "Eliseo and group of ecommerce",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^3.9.2",
+    "aws-sdk": "^2.1092.0",
+    "bcrypt": "^5.0.1",
+    "dotenv-cli": "^5.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "prisma": "^3.9.2",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "standard": "^16.0.4"
+  },
+  "eslintConfig": {
+    "extends": "/node_modules/standard/eslintrc.json"
+  }
+}

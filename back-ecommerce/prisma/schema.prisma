@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#model-field-scalar-types
+model Usuario {
+  id       Int     @id @unique @default(autoincrement())
+  nombre   String
+  correo   String  @unique
+  password String
+  imagen   String?
+
+  @@map(name: "usuarios")
+}
+
+model Administrador {
+  id       Int    @id @unique @default(autoincrement())
+  nombre   String
+  correo   String @unique
+  password String
+
+  @@map(name: "administrador")
+}
+
+model Producto {
+  id             Int          @id @unique @default(autoincrement())
+  nombre         String       @db.VarChar(100)
+  precio         Float
+  descripcion    String?      @db.VarChar(300)
+  imagen         String?
+  genero         Genero       @default(OTRO) @map(name: "genero")
+  tipoProductoId Int          @map(name: "tipo_producto_id")
+  tipoProducto   TipoProducto @relation(fields: [tipoProductoId], references: [id])
+
+  @@map(name: "productos")
+}
+
+model TipoProducto {
+  id        Int        @id @unique @default(autoincrement())
+  nombre    String     @unique
+  productos Producto[]
+
+  @@map(name: "tipo_productos")
+}
+
+enum Genero {
+  MASCULINO
+  FEMENINO
+  OTRO
+}
