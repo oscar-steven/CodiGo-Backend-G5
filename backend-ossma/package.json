@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "mssql": "^10.0.1"
+  },
+  "name": "apiossma",
+  "version": "1.0.0",
+  "description": "creacion de api para consultas insert upload a bd ossma",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/oscar-steven/backend-kayser-ossma.git)"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "middlewares"
+  ],
+  "author": "Oscar Perez",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv-cli": "^7.3.0"
+  }
+}
