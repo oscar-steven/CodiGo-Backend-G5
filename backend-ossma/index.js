@@ -47,6 +47,8 @@ app.get("/inventorylpn", async (req, res) => {
   }
 });
 
+//nuevo
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
